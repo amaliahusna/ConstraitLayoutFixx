@@ -38,8 +38,18 @@ public class MainActivity extends AppCompatActivity {
                         "Login Berhasil", Toast.LENGTH_LONG);
                 t.show();
             }
-            else
-            {
+            else if (nama.equals(email) || password.equals(pass)) {
+                if (nama.equals(email)) {
+                    Toast ps = Toast.makeText(getApplicationContext(),
+                            "Invalid Password", Toast.LENGTH_SHORT);
+                    ps.show();
+                }
+                else{
+                    Toast es = Toast.makeText(getApplicationContext(),
+                            "Invalid Email", Toast.LENGTH_LONG);
+                    es.show();
+                }}
+            else{
                 Toast t = Toast.makeText(getApplicationContext(),
                         "Login Gagal", Toast.LENGTH_LONG);
                 t.show();
