@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="mnnomor" type="id" />
+    <item name="signIn" type="id" />
+    <item name="Email" type="id" />
+    <item name="btndftr" type="id" />
+</resources>

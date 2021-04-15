@@ -1,12 +1,11 @@
 package com.example.tugas1;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -14,53 +13,30 @@ import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnLogin;
-    EditText edemail;
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if (item.getItemId() == R.id.mnDaftar)
-        {
-            Intent i = new Intent(getApplicationContext(), DaftarActivity.class);
-            startActivity(i);
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    EditText edpassword;
-    EditText edusername;
-    String nama, password,username;
+    EditText edemail, edpassword;
+    Button btnsignin, btnblmdaftar;
+    String nama, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnLogin = findViewById(R.id.button);
-        edemail = findViewById(R.id.editTextTextEmailAddress);
-        edpassword = findViewById(R.id.editTextNumberPassword);
-        edusername = findViewById(R.id.editTextTextPersonName);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        btnsignin = findViewById(R.id.signIn);
+        edemail=findViewById(R.id.Email);
+        edpassword = findViewById(R.id.Password);
+        btnblmdaftar=findViewById(R.id.btndftr);
+
+        btnsignin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                nama = edemail.getText().toString();
-                password = edpassword.getText().toString();
-                username = edusername.getText().toString();
+            public void onClick(View v) {
+
                 String username = "husna";
                 String email = "admin@mail.com";
-                String pass = "123";
-                if (nama.isEmpty() || password.isEmpty()) {
-                    Toast t = Toast.makeText(getApplicationContext(),
-                            "Email dan password wajib diisi!!!", Toast.LENGTH_LONG);
-                    t.show();
-                } else {
+                String pass = "123456";
+                nama = edemail.getText().toString();
+                password = edpassword.getText().toString();
+                {
                     if (nama.equals(email) && password.equals(pass)) {
                         Toast t = Toast.makeText(getApplicationContext(),
                                 "Login Sukses", Toast.LENGTH_SHORT);
@@ -71,12 +47,30 @@ public class MainActivity extends AppCompatActivity {
                         Intent i = new Intent(getApplicationContext(), Home_Activity.class);
                         i.putExtras(b);
                         startActivity(i);
-                    } else {
-                        Toast t = Toast.makeText(getApplicationContext(),
-                                "Login Gagal", Toast.LENGTH_LONG);
-                        t.show();
+                    } else if (nama.equals(email) || pass.equals(password))
+                    {
+                        if(nama.equals(email)) {
+                            Toast ps = Toast.makeText(getApplicationContext(),"Password Salah", Toast.LENGTH_LONG);
+                            ps.show();
+                        }
+                        else {
+                            Toast es = Toast.makeText(getApplicationContext(), "Email salah", Toast.LENGTH_LONG);
+                            es.show();
+                        }
+                    }
+                    else {
+                        Toast m = Toast.makeText(getApplicationContext(), "email dan password salah", Toast.LENGTH_LONG);
+                        m.show();
                     }
                 }
+            }
+        });
+
+        btnblmdaftar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DaftarActivity.class);
+                startActivity(intent);
             }
         });
     }}

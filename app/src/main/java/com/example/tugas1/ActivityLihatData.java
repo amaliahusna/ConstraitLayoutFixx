@@ -14,11 +14,17 @@ public class ActivityLihatData extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lihat_data);
-        Bundle b = getIntent().getExtras();
-        nama = b.getString("a");
 
-        tvnama = (TextView) findViewById(R.id.tvNamaKontak);
-        tvnomor = (TextView) findViewById(R.id.tvNomorTelepon);
+        tvnama = findViewById(R.id.tvNamaKontak);
+        tvnomor = findViewById(R.id.tvNomorTelepon);
+
+        Bundle bundle = getIntent().getExtras();
+
+        String nama = bundle.getString("a");
+        String nomor = bundle.getString("b");
+
+        nomor=tvnomor.getText().toString();
+
         switch (nama)
         {
             case "Dana":

@@ -19,4 +19,8 @@
     <string name="datakontak">Data Kontak</string>
     <string name="namaitem">Nama</string>
     <string name="notel">Nomor Telepon</string>
+    <string name="Signin">Masuk</string>
+    <string name="blmdaftar">Belum Mendaftar</string>
+    <string name="rdlk">Laki-laki</string>
+    <string name="rdperem">Perempuan</string>
 </resources>
